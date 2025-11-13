@@ -1,1 +1,1 @@
-mcp-tasks: node dist/index.js stdio
+mcp: node dist/index.js stdio

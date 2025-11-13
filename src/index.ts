@@ -31,7 +31,7 @@ import {
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 
-// ---------- MCP server ----------
+// MCP Server
 async function buildMcpServer() {
   const server = new McpServer({
     name: "task-manager",
@@ -172,7 +172,7 @@ async function buildMcpServer() {
   server.registerResource(
     "project-tasks",
     new ResourceTemplate("tasks://{projectId}", { list: undefined }),
-    { title: "Tasks", description: "List all tasks for a project" },
+    { title: "Tasks By Project", description: "List all tasks for a project" },
     async (uri, { projectId }) => {
       console.error("projectId", projectId);
       console.error("uri", uri);
