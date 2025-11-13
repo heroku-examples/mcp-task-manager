@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mcp-task-manager": {
+      "type": "streamable-http",
+      "url": "http://localhost:3000/mcp"
+    }
+  }
+}

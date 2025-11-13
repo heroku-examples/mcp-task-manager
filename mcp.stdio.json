@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcp-task-manager": {
+      "type": "stdio",
+      "command": "npm",
+      "args": ["run", "dev:stdio"]
+    }
+  }
+}
