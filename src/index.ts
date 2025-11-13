@@ -35,7 +35,8 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 async function buildMcpServer() {
   const server = new McpServer({
     name: "task-manager",
-    description: "Project and task management MCP server, use it to create projects, add tasks, list tasks, complete tasks, and plan next steps.",
+    description:
+      "Project and task management MCP server, use it to create projects, add tasks, list tasks, complete tasks, and plan next steps.",
     version: "1.0.0",
   });
 
@@ -61,7 +62,7 @@ async function buildMcpServer() {
           project,
         },
       };
-    }
+    },
   );
 
   server.registerTool(
@@ -74,12 +75,14 @@ async function buildMcpServer() {
     async () => {
       const projects = await listProjects();
       return {
-        content: [{ type: "text", text: `Projects: ${JSON.stringify(projects)}` }],
+        content: [
+          { type: "text", text: `Projects: ${JSON.stringify(projects)}` },
+        ],
         structuredContent: {
           projects,
         },
       };
-    }
+    },
   );
 
   server.registerTool(
@@ -93,12 +96,14 @@ async function buildMcpServer() {
     async ({ projectId, title }) => {
       const task = await addTask(projectId, title);
       return {
-        content: [{ type: "text", text: `Task added: ${JSON.stringify(task)}` }],
+        content: [
+          { type: "text", text: `Task added: ${JSON.stringify(task)}` },
+        ],
         structuredContent: {
           task,
         },
       };
-    }
+    },
   );
 
   server.registerTool(
@@ -117,7 +122,7 @@ async function buildMcpServer() {
           tasks,
         },
       };
-    }
+    },
   );
 
   server.registerTool(
@@ -131,19 +136,43 @@ async function buildMcpServer() {
     async ({ projectId, taskId }) => {
       const task = await completeTask(projectId, taskId);
       return {
-        content: [{ type: "text", text: `Task completed: ${JSON.stringify(task)}` }],
+        content: [
+          { type: "text", text: `Task completed: ${JSON.stringify(task)}` },
+        ],
         structuredContent: {
           task,
         },
       };
-    }
+    },
   );
 
   // Resources
   server.registerResource(
+    "projects",
+    "projects://*",
+    { title: "Projects", description: "List all available projects" },
+    async () => {
+      const projects = await listProjects();
+      return {
+        contents: [
+          {
+            text: `Projects:\n\n${projects
+              .map(
+                (project: any) =>
+                  `- ${project.id} - ${project.name} (${project.createdAt})`,
+              )
+              .join("\n")}`,
+            uri: "projects://*",
+          },
+        ],
+      };
+    },
+  );
+
+  server.registerResource(
     "project-tasks",
     new ResourceTemplate("tasks://{projectId}", { list: undefined }),
-    { title: "Tasks", description: "Tasks" },
+    { title: "Tasks", description: "List all tasks for a project" },
     async (uri, { projectId }) => {
       console.error("projectId", projectId);
       console.error("uri", uri);
@@ -154,7 +183,7 @@ async function buildMcpServer() {
           uri: uri.href,
         })),
       };
-    }
+    },
   );
 
   // Prompts
@@ -188,7 +217,7 @@ async function buildMcpServer() {
           },
         ],
       };
-    }
+    },
   );
 
   return server;

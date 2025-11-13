@@ -18,7 +18,7 @@ export const ListProjectsOutput = {
       id: z.string(),
       name: z.string(),
       createdAt: z.string(),
-    })
+    }),
   ),
 };
 
@@ -50,7 +50,7 @@ export const ListTasksOutput = {
       done: z.boolean(),
       createdAt: z.string(),
       completedAt: z.string().nullable().optional(),
-    })
+    }),
   ),
 };
 
@@ -69,7 +69,6 @@ export const CompleteTaskOutput = {
     completedAt: z.string().nullable().optional(),
   }),
 };
-
 
 export const NextStepsInput = {
   projectId: z.string().min(1),
