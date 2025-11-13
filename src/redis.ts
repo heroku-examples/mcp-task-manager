@@ -106,6 +106,7 @@ export async function completeTask(projectId: string, taskId: string) {
     projectId,
     title: task.title,
     done: task.done === "true",
+    createdAt: task.createdAt,
     completedAt,
   };
 }
