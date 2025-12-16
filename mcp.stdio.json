@@ -2,8 +2,8 @@
   "mcpServers": {
     "mcp-task-manager": {
       "type": "stdio",
-      "command": "npm",
-      "args": ["run", "dev:stdio"]
+      "command": "node",
+      "args": ["dist/index.js", "stdio"]
     }
   }
 }

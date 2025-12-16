@@ -18,19 +18,19 @@
   "type": "commonjs",
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.21.1",
+    "@modelcontextprotocol/sdk": "^1.25.1",
     "dotenv": "^17.2.3",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "ioredis": "^5.8.2",
     "slugify": "^1.6.6",
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@modelcontextprotocol/inspector": "^0.17.2",
-    "@types/express": "^5.0.5",
-    "@types/node": "^24.10.1",
+    "@modelcontextprotocol/inspector": "^0.17.5",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.4",
     "concurrently": "^9.2.1",
-    "tsx": "^4.20.6",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
 }
